@@ -41,5 +41,10 @@ namespace Ccc.Game.Entities
                 GameState.Health -= GameState.HealthDepreciationRate;
             }
         }
+
+        public bool Dead()
+        {
+            return false;
+        }
     }
 }

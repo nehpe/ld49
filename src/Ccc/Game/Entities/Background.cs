@@ -24,6 +24,10 @@ namespace Ccc.Game.Entities
         {
 
         }
-    }
 
+        public bool Dead()
+        {
+            return false;
+        }
+    }
 }

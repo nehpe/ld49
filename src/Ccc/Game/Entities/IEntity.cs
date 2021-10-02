@@ -6,6 +6,7 @@ namespace Ccc.Game.Entities
     {
         public void Draw();
         public void Update();
+        public bool Dead();
     }
 
 }

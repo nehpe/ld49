@@ -7,10 +7,10 @@ namespace Ccc
     {
         static void Main(string[] args)
         {
-          using (var g = new CccGame()) 
-          {
-            g.Run();
-          }
+            using (var g = new CccGame())
+            {
+                g.Run();
+            }
         }
     }
 }

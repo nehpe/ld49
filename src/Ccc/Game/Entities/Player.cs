@@ -15,7 +15,7 @@ namespace Ccc.Game.Entities
 
         public Player(Renderer.Renderer r, CccGame g, PlayScene s)
         {
-            this.sprite = new Rectangle(400, 280, 40, 40);
+            this.sprite = new Rectangle(600, 480, 40, 40);
             this.r = r;
             this.g = g;
             this.s = s;
@@ -24,13 +24,14 @@ namespace Ccc.Game.Entities
         public void Draw()
         {
             r.DrawRectangle(
-                (int) sprite.x, (int) sprite.y,
-                (int) sprite.width, (int) sprite.height,
+                (int)sprite.x, (int)sprite.y,
+                (int)sprite.width, (int)sprite.height,
                 Color.RED);
         }
 
         public void Update()
         {
+            // Keyboard Input
             if (r.IsKeyDown(KeyboardKey.KEY_A))
                 sprite.x -= speed * r.GetFrameTime();
             if (r.IsKeyDown(KeyboardKey.KEY_D))
@@ -58,6 +59,11 @@ namespace Ccc.Game.Entities
                         sprite.x, sprite.y,
                         0, 1);
 
+        }
+
+        public bool Dead()
+        {
+            return false;
         }
     }
 }
