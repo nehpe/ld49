@@ -1,4 +1,6 @@
 using static Raylib_cs.Raylib;
+using Ccc.Game.Scenes;
+using System;
 using Raylib_cs;
 
 namespace Ccc.Game.Entities
@@ -6,13 +8,17 @@ namespace Ccc.Game.Entities
     public class Player : IEntity
     {
         private Rectangle sprite;
+        private CccGame g;
+        private PlayScene s;
         private Renderer.Renderer r;
         private float speed = 170.0f;
 
-        public Player(Renderer.Renderer r)
+        public Player(Renderer.Renderer r, CccGame g, PlayScene s)
         {
             this.sprite = new Rectangle(400, 280, 40, 40);
             this.r = r;
+            this.g = g;
+            this.s = s;
         }
 
         public void Draw()
@@ -29,11 +35,29 @@ namespace Ccc.Game.Entities
                 sprite.x -= speed * r.GetFrameTime();
             if (r.IsKeyDown(KeyboardKey.KEY_D))
                 sprite.x += speed * r.GetFrameTime();
-            
+
             if (r.IsKeyDown(KeyboardKey.KEY_W))
                 sprite.y -= speed * r.GetFrameTime();
             if (r.IsKeyDown(KeyboardKey.KEY_S))
                 sprite.y += speed * r.GetFrameTime();
+
+            if (r.IsKeyPressed(KeyboardKey.KEY_LEFT))
+                this.s.AddProjectile(
+                        sprite.x, sprite.y,
+                        -1, 0);
+            if (r.IsKeyPressed(KeyboardKey.KEY_RIGHT))
+                this.s.AddProjectile(
+                        sprite.x, sprite.y,
+                        1, 0);
+            if (r.IsKeyPressed(KeyboardKey.KEY_UP))
+                this.s.AddProjectile(
+                        sprite.x, sprite.y,
+                        0, -1);
+            if (r.IsKeyPressed(KeyboardKey.KEY_DOWN))
+                this.s.AddProjectile(
+                        sprite.x, sprite.y,
+                        0, 1);
+
         }
     }
 }
