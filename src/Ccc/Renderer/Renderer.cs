@@ -33,6 +33,7 @@ namespace Ccc.Renderer
         public void EndDrawing() => rl.EndDrawing();
 
         public void DrawFPS(int x, int y) => rl.DrawFPS(x, y);
+        public void DrawGrid(int s, float sp) => rl.DrawGrid(s, sp);
 
         // Keyboard
         public void IsKeyPressed(KeyboardKey k) => rl.IsKeyPressed(k);
@@ -63,5 +64,16 @@ namespace Ccc.Renderer
         public void DrawTexture(Texture2D t, Rectangle s, Vector2 p, Color ti) => rl.DrawTextureRec(t, s, p, ti);
         public void DrawTexture(Texture2D t, Vector2 til, Vector2 o, Rectangle q, Color ti) => rl.DrawTextureQuad(t, til, o, q, ti);
         public void DrawTexture(Texture2D t, Rectangle s, Rectangle d, Vector2 o, float r, Color ti) => rl.DrawTexturePro(t, s, d, o, r, ti);
+
+        // Shapes
+        public void DrawRectangle(int x, int y, int w, int h, Color c) => rl.DrawRectangle(x, y, w, h, c);
+        public void DrawRectangleLines(int x, int y, int w, int h, Color c) => rl.DrawRectangleLines(x, y, w, h, c);
+        public void DrawRectangleRounded(Rectangle r, float ro, int s, Color c) => rl.DrawRectangleRounded(r, ro, s, c);
+        public void DrawRectangleRoundedLines(Rectangle r, float ro, int s, int l, Color c) => rl.DrawRectangleRoundedLines(r, ro, s, l, c);
+
+        // Collisions
+        public Rectangle GetCollisionRec(Rectangle r1, Rectangle r2) => rl.GetCollisionRec(r1, r2);
+        public bool CheckCollisionRecs(Rectangle r1, Rectangle r2) => rl.CheckCollisionRecs(r1, r2);
+        public bool CheckCollisionPointRec(Vector2 p, Rectangle r) => rl.CheckCollisionPointRec(p, r);
     }
 }
