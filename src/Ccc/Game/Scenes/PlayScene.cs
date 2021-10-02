@@ -16,6 +16,8 @@ namespace Ccc.Game.Scenes
         Background bg;
         HUD.Hud h;
 
+        SpawnTimer st;
+
         List<Projectile> Projectiles = new List<Projectile>();
         List<Human> Humans = new List<Human>();
 
@@ -34,6 +36,8 @@ namespace Ccc.Game.Scenes
                     GameState.rnd.Next(0, CccSettings.SCREEN_WIDTH),
                     GameState.rnd.Next(0, CccSettings.SCREEN_HEIGHT))
             );
+
+            st = new SpawnTimer(this, this.r);
         }
 
         public void Draw()
@@ -69,7 +73,6 @@ namespace Ccc.Game.Scenes
             foreach (Projectile p in Projectiles)
             {
                 p.Update();
-                Console.WriteLine(p.GetRect());
             }
 
             foreach (Human human in Humans)
@@ -87,11 +90,8 @@ namespace Ccc.Game.Scenes
             {
                 foreach (Human human in Humans)
                 {
-                    Console.WriteLine("Projectile:" + p.GetRect());
-                    Console.WriteLine("Human:" + human.GetRect());
                     if (r.CheckCollisionRecs(p.GetRect(), human.GetRect()))
                     {
-                        Console.WriteLine("I collided");
                         p.Kill();
                         human.TakeDamage(p);
                     }
@@ -102,21 +102,14 @@ namespace Ccc.Game.Scenes
             cleanupHumans();
 
             // Should I spawn a human?
-            /*if (GameState.rnd.Next(0, 10) >= 8)
-            {
-                Humans.Add(
-                    new Human(this.r,
-                        GameState.rnd.Next(0, CccSettings.SCREEN_WIDTH),
-                        GameState.rnd.Next(0, CccSettings.SCREEN_HEIGHT))
-                );
-            }*/
+            st.Update();
         }
 
         private void cleanupHumans()
         {
             Humans.RemoveAll(e => e.Dead());
         }
-        
+
         private void cleanupProjectile()
         {
             Projectiles.RemoveAll(e => e.Dead());
@@ -129,6 +122,11 @@ namespace Ccc.Game.Scenes
                 this.r,
                 new Vector2(x, y),
                 new Vector2(vx, vy)));
+        }
+
+        public void AddHuman(Human human)
+        {
+            Humans.Add(human);
         }
     }
 }
