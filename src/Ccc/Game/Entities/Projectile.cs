@@ -7,7 +7,7 @@ namespace Ccc.Game.Entities
         Rectangle sprite;
         Vector2 velocity;
 
-        public float speed = 100f;
+        public float speed = 200f;
 
         private Renderer.Renderer r;
 
