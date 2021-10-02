@@ -68,6 +68,12 @@ namespace Ccc.Game.Scenes
 
         public void Update()
         {
+            if (GameState.GameOver)
+            {
+                this.g.ChangeScene(new GameOverScene(this.r, this.g));
+            }
+
+
             bg.Update();
             player.Update();
             foreach (Projectile p in Projectiles)

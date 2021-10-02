@@ -13,8 +13,7 @@ namespace Ccc.Game
         {
             r = new Renderer.Renderer(CccSettings.SCREEN_WIDTH,
                     CccSettings.SCREEN_HEIGHT, "CCC v" + CccSettings.VERSION);
-            //currentScene = new PlayScene(r, this);
-            currentScene = new GameOverScene(r, this);
+            currentScene = new PlayScene(r, this);
         }
 
 
@@ -33,7 +32,7 @@ namespace Ccc.Game
             r = null;
         }
 
-        public void NewScene(IScene scene)
+        public void ChangeScene(IScene scene)
         {
             currentScene = scene;
         }
