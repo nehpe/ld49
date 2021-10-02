@@ -13,7 +13,8 @@ namespace Ccc.Game
         {
             const int screenWidth = 800;
             const int screenHeight = 600;
-            r = new Renderer.Renderer(screenWidth, screenHeight, "CCC");
+            r = new Renderer.Renderer(CccSettings.SCREEN_WIDTH,
+                    CccSettings.SCREEN_HEIGHT, "CCC v" + CccSettings.VERSION);
             currentScene = new PlayScene(r, this);
         }
 

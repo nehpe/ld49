@@ -16,9 +16,11 @@ namespace Ccc.Game.Scenes
         public void Draw()
         {
             r.ClearBackground(BLACK);
-            r.BeginDrawing();
-            r.DrawText("Oh hai", 100, 100, 48, WHITE);
-            r.DrawFPS(10, 10);
+            {
+                r.BeginDrawing();
+                r.DrawText("Oh hai", 100, 100, 48, WHITE);
+                r.DrawFPS(10, 10);
+            }
             r.EndDrawing();
         }
 
