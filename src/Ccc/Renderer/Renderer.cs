@@ -36,10 +36,10 @@ namespace Ccc.Renderer
         public void DrawGrid(int s, float sp) => rl.DrawGrid(s, sp);
 
         // Keyboard
-        public void IsKeyPressed(KeyboardKey k) => rl.IsKeyPressed(k);
-        public void IsKeyDown(KeyboardKey k) => rl.IsKeyDown(k);
-        public void IsKeyReleased(KeyboardKey k) => rl.IsKeyReleased(k);
-        public void IsKeyUp(KeyboardKey k) => rl.IsKeyUp(k);
+        public bool IsKeyPressed(KeyboardKey k) => rl.IsKeyPressed(k);
+        public bool IsKeyDown(KeyboardKey k) => rl.IsKeyDown(k);
+        public bool IsKeyReleased(KeyboardKey k) => rl.IsKeyReleased(k);
+        public bool IsKeyUp(KeyboardKey k) => rl.IsKeyUp(k);
 
         // Mouse
         public bool IsMouseButtonPressed(MouseButton mb) => rl.IsMouseButtonPressed(mb);

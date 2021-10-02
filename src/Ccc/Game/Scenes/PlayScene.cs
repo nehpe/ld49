@@ -1,3 +1,4 @@
+using Ccc.Game.Entities;
 using static Raylib_cs.Color;
 
 namespace Ccc.Game.Scenes
@@ -7,18 +8,27 @@ namespace Ccc.Game.Scenes
         Renderer.Renderer r;
         CccGame g;
 
+        Player player;
+        Background bg;
+
         public PlayScene(Renderer.Renderer r, CccGame g)
         {
             this.r = r;
             this.g = g;
+
+            this.bg = new Background(r);
+            this.player = new Player(r);
         }
 
         public void Draw()
         {
             r.ClearBackground(BLACK);
+            r.BeginDrawing();
             {
-                r.BeginDrawing();
-                r.DrawText("Oh hai", 100, 100, 48, WHITE);
+                bg.Draw();
+                
+                player.Draw();
+                
                 r.DrawFPS(10, 10);
             }
             r.EndDrawing();
@@ -26,7 +36,8 @@ namespace Ccc.Game.Scenes
 
         public void Update()
         {
-
+            bg.Update();
+            player.Update();
         }
     }
 }
