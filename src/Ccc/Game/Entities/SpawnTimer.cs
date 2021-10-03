@@ -1,3 +1,4 @@
+using Raylib_cs;
 using Ccc.Game.Scenes;
 
 namespace Ccc.Game.Entities
@@ -31,8 +32,8 @@ namespace Ccc.Game.Entities
                 timer = 0f;
 
                 s.AddHuman(new Human(this.r,
-                        GameState.rnd.Next(0, CccSettings.SCREEN_WIDTH),
-                        GameState.rnd.Next(0, CccSettings.SCREEN_HEIGHT)));
+                        GameState.rnd.Next(0, CccSettings.SCREEN_WIDTH - 50),
+                        GameState.rnd.Next(0, CccSettings.SCREEN_HEIGHT - 50)));
             }
 
         }
@@ -40,6 +41,11 @@ namespace Ccc.Game.Entities
         public bool Dead()
         {
             return false;
+        }
+
+        public Rectangle GetRect()
+        {
+            return new Rectangle();
         }
     }
 }

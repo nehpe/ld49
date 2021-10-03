@@ -61,6 +61,11 @@ namespace Ccc.Game.Entities
 
         }
 
+        public Rectangle GetRect()
+        {
+            return this.sprite;
+        }
+
         public bool Dead()
         {
             return false;

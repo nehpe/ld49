@@ -46,5 +46,10 @@ namespace Ccc.Game.Entities
         {
             return false;
         }
+
+        public Rectangle GetRect()
+        {
+            return new Rectangle();
+        }
     }
 }

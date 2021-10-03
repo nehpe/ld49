@@ -1,18 +1,19 @@
-using static Raylib_cs.Raylib;
-using static Raylib_cs.Color;
 using Raylib_cs;
 
 namespace Ccc.Game.Entities
 {
-    public class Background : IEntity
+    public class BloodPickup : IEntity
     {
         private Rectangle sprite;
         private Renderer.Renderer r;
 
-        public Background(Renderer.Renderer r)
+        private bool IsDead = false;
+
+        public BloodPickup(int x, int y, Renderer.Renderer r)
         {
-            sprite = new Rectangle(-6000, 320, 13000, 8000);
             this.r = r;
+
+            sprite = new Rectangle(x, y, 10, 10);
         }
 
         public void Draw()
@@ -20,7 +21,7 @@ namespace Ccc.Game.Entities
             r.DrawRectangle(
                     (int)sprite.x, (int)sprite.y,
                     (int)sprite.width, (int)sprite.height,
-                    Color.DARKGRAY);
+                    Color.GREEN);
         }
 
         public void Update()
@@ -28,14 +29,20 @@ namespace Ccc.Game.Entities
 
         }
 
-        public bool Dead()
-        {
-            return false;
-        }
-
         public Rectangle GetRect()
         {
-            return new Rectangle();
+            return this.sprite;
+        }
+
+        public bool Dead()
+        {
+            return IsDead;
+        }
+
+        public void Kill()
+        {
+            IsDead = true;
         }
     }
+
 }
